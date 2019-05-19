@@ -3,7 +3,7 @@ const uniqueValidator = require('mongoose-unique-validator')
 
 const validator = require("validator")
 const bcrypt = require("bcryptjs")
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken") 
 
 const Schema = mongoose.Schema
 const userSchema = new Schema({
