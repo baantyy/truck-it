@@ -1,9 +1,16 @@
 const express = require("express")
 const router = express.Router()
 
-const { userRouter } = require('../app/controllers/UserController')
+const { vendorAdminController }= require('../app/controllers/admin/VendorController')
 
-router.use("/users", userRouter)
+const { userRouter } = require('../app/controllers/UserController')
+const { vendorRouter } = require('../app/controllers/VendorController')
+
+
+router.use("/admin/vendor", vendorAdminController )
+
+router.use("/", userRouter)
+router.use("/vendor", vendorRouter)
 
 module.exports = {
     routes: router
