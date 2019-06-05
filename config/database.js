@@ -1,8 +1,14 @@
 const mongoose = require("mongoose")
+require('dotenv').config()
+
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://localhost:27017/truck-it",{
+const server = process.env.MY_TRUCKIT_SERVER
+const db = process.env.MY_TRUCKIT_DB
+
+mongoose.connect(`mongodb://${server}/${db}`,{
             useNewUrlParser: true,
-            useCreateIndex: true
+            useCreateIndex: true,
+            useFindAndModify: false
         })
         .then(function(){
             console.log("DB is connected")

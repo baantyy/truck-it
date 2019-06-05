@@ -1,0 +1,1101 @@
+html{
+    font-family: 'Lato', sans-serif;
+    scroll-behavior: smooth;
+}
+body{
+    
+}
+.app{
+
+}
+.wrapper{
+
+}
+.pageLoader{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 40px;
+    transform: translate(-50%,-50%);
+    color: #3d38a0;
+}
+.pageLoader img{
+    width: 40px;
+}
+
+/*Start Header*/
+header{
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    border-bottom: 1px solid #ebebff;
+    transition: all .5s ease-in-out;
+}
+header.bg{
+    background: white;
+    border-color: transparent;
+    box-shadow: 0 0 10px -2px #c9c6ff;
+}
+.navbar{
+    padding: 10px 0;
+}
+.navbar-brand{
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 30px;
+    color: #3d38a0 !important;
+    outline: 0;
+}
+.navbar-toggler{
+    outline: 0 !important;
+}
+.navbar-toggler img{
+    width: 25px;
+}
+.navbar-collapse{
+
+}
+.navbar-nav{
+
+}
+.nav-item{
+
+}
+.nav-link{
+    color: #3d38a0 !important;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 15px !important;
+}
+.nav-link.highlight{
+    background: #3d38a0;
+    border-radius: 3px;
+    color: white !important;
+    font-weight: 400;
+    padding: 8px 20px !important;
+    margin-left: 10px;
+}
+.nav-link.logout{
+    background: #F44336;
+}
+.header{
+    background: #514e96 !important;
+}
+.header .navbar-brand,
+.header .nav-link{
+    color: white !important;
+}
+/*End Header*/
+
+/*Start Landing*/
+.homepage{
+    
+}
+.landing{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    min-height: 600px;
+}
+.landing .rightImg{
+    position: absolute;
+    height: 100%;
+    max-width: 100%;
+    top: 0;
+    right: 0;
+}
+.landing .container{
+    height: 100%;
+}
+.landing .content{
+    position: relative;
+    top: 50%;
+    left: 0;
+    transform: translate(0%,-50%);
+    width: 50%;
+}
+.landing .content h1{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.landing .content ul{
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    line-height: 30px;
+    list-style: none;
+}
+.landing .content ul li{
+    
+}
+.landing .content ul i{
+    font-size: 13px;
+    margin: 0 10px 0 0;
+    color: #3d38a0;
+}
+.estimateForm{
+    display: table;
+    width: 100%;
+    margin: 20px 0 0 0;
+}
+.estimateForm input{
+    width: 35%;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 15px;
+    padding: 10px 15px;
+    border: 1px solid #b6b6b6;
+    outline: 0;
+}
+.estimateForm button{
+    width: 30%;
+    display: inline-block;
+    vertical-align: top;
+    background: #3d38a0;
+    border: 0;
+    color: white;
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 10px 10px;
+    height: 44px;
+    outline: 0;
+}
+.showPlaces{
+    margin: 0;
+    padding: 10px;
+    position: absolute;
+    list-style: none;
+    font-size: 14px;
+    width: 100%;
+    background: #ebebff96;
+}
+.showPlaces li{
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.showPlaces li:hover{
+    font-weight: 500;
+}
+.landing p.status{
+    margin: 10px 0 0;
+    font-size: 15px;
+    position: absolute;
+    display: block;
+}
+/*End Landing*/
+
+/*Start Modal*/
+.modal{
+
+}
+.modal-dialog{
+    max-width: 600px;
+}
+.modal-content{
+    border: 0;
+}
+.modal-header{
+    background: #ececec;
+    padding: 15px 30px;
+}
+.modal-title{
+    font-size: 18px;
+}
+.modal-body{
+    height: 400px;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 0;
+}
+.modal-body::-webkit-scrollbar{
+    width: 5px;
+    height: 0;
+}
+.modal-body::-webkit-scrollbar-track{
+    background: white;
+}
+.modal-body::-webkit-scrollbar-thumb{
+    background: #a5a5a5;
+}
+.modal-body::-webkit-scrollbar-thumb:hover{
+    background: #a5a5a5;
+}
+.modal-footer{
+    padding: 5px;
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+}
+.modal-header .close{
+    outline: 0;
+}
+.modal-footer button{
+    margin: 0;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: black !important;
+    font-size: 15px;
+}
+.modal-footer button.left{
+    float: left;
+}
+.modal-footer button i{
+    background: #312e89;
+    color: white;
+    padding: 8px 0;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+}
+.chooseDate{
+    text-align: center;
+}
+.chooseDate > p{
+    margin: 0 auto;
+    font-size: 15px;
+    font-weight: 700;
+    border: 1px solid #ddd;
+    display: block;
+    width: 240px;
+    padding: 7px;
+    background: #ececec;
+}
+.chooseVolume{
+    padding: 30px;
+}
+.custom-control{
+    padding: 10px 25px;
+}
+.custom-control-label{
+    font-size: 15px;
+    text-transform: capitalize;
+}
+.modal .custom-control-label{
+    font-weight: 700;
+}
+.custom-radio .custom-control-input:checked~.custom-control-label::after {
+    background-color: #312e89;
+    border-radius: 50%;
+}
+.custom-radio .custom-control-label::before {
+    box-shadow: none !important;
+}
+.chooseVehicle{
+    padding: 30px 30px 0;
+}
+.chooseVehicle .item{
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 20px 20px 0;
+    margin-bottom: 30px;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+.chooseVehicle .item:hover{
+    border-color: #9c9c9c;
+}
+.chooseVehicle h3{
+    font-size: 15px;
+    font-weight: 700;
+}
+.chooseVehicle img{
+    height: 60px;
+    margin-bottom: 10px;
+}
+.chooseVehicle p{
+    margin: 0;
+    font-size: 13px;
+    line-height: 22px;
+}
+.chooseVehicle .estimateCost{
+    margin: 20px -20px 0;
+    background: #ececec;
+    border-top: 1px solid #ddd;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all .5s ease-in-out;
+}
+.chooseVehicle .item:hover .estimateCost{
+    border-color: #9c9c9c;
+    background: #e4e4e4;
+}
+/*End Modal*/
+
+/*Start Services*/
+.services {
+    padding: 70px 0 40px;
+    text-align: center;
+    background: #ebebff;
+    margin: -2px 0 0;
+    position: relative;
+    overflow: hidden;
+}
+.services > img{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    object-position: top right;
+    transform: rotateY(180deg);
+}
+.services .container{
+    position: relative;
+}
+.services h2 {
+    font-size: 30px;
+    margin-bottom: 60px;
+}
+.services .item .img {
+    position: relative;
+}
+.services .item img {
+    width: 70px;
+    position: relative;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+.services .item:hover img {
+    animation-name: rubberBand;
+}
+.services .item .img:before {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: #3d38a01c;
+    border-radius: 50%;
+    left: calc(50% - 10px);
+    top: 10px;
+    transform: translate(-50%,0);
+    box-shadow: inset 0 0 16px -10px #3d38a08a;
+}
+.services h3 {
+    font-size: 20px;
+    margin: 35px 0 15px;
+    text-transform: capitalize;
+}
+.services p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 28px;
+}
+.services .item {
+    padding: 30px;
+    background: #fbfbfbc4;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px -7px #d6d6d6;
+    margin-bottom: 30px;
+}
+/*End Services*/
+
+/*Start About*/
+.about{
+    padding: 70px 0;
+}
+.about .img img{
+    width: 100%;
+}
+.about h2{
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+.about p{
+    font-size: 15px;
+    margin-bottom: 15px;
+    line-height: 30px;
+    text-align: justify;
+}
+.about ul{
+    padding: 0;
+    font-size: 15px;
+    line-height: 30px;
+    margin-bottom: 20px;
+    list-style: none;
+}
+.about li{
+
+}
+.about li i{
+    font-size: 13px;
+    margin: 0 10px 0 0;
+    color: #3d38a0;
+}
+.about a.more{
+    background: #3d38a0;
+    border-radius: 3px;
+    color: white !important;
+    font-weight: 400;
+    padding: 8px 20px !important;
+    display: inline-block;
+    font-size: 14px;
+    text-decoration: none;
+}
+/*End About*/
+
+/*Start Contact*/
+.contact{
+    padding: 70px 0;
+    position: relative;
+    overflow: hidden;
+    background: #fafafa;
+}
+.contact:before{
+    content: "";
+    position: absolute;
+}
+.contact h2{
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+.contact form{
+
+}
+.contact input,
+.contact textarea{
+    width: 100%;
+    border: 0;
+    padding: 10px 20px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    outline: 0;
+    background: #efefef;
+    border-radius: 3px;
+}
+.contact button{
+    background: #3d38a0;
+    color: white;
+    border: 0;
+    font-size: 14px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: 0;
+    margin: -5px 0 0;
+}
+.contact .map{
+    width: 100%;
+    height: 100%;
+}
+.contact .map iframe{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-left: 15px;
+}
+.contact [class*='col-']{
+    position: static;
+}
+/*End Contact*/
+
+/*Start Footer*/
+footer{
+    background: #efefef;
+    padding: 15px 0;
+}
+footer p{
+    margin: 4px 0 0 0;
+    font-size: 15px;
+}
+footer ul{
+    list-style: none;
+    display: inline-block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+}
+footer li{
+    display: inline-block;
+}
+footer a{
+    font-size: 18px;
+    display: block;
+    margin: 0 0 0 15px;
+    color: #3d38a0 !important;
+}
+/*End Footer*/
+
+/*Start Day Picker*/
+.DayPicker-Day {
+    border: 1px solid #ddd;
+    border-radius: 0;
+    outline: 0;
+}
+.DayPicker-wrapper,
+.DayPicker-NavButton{
+    outline: 0;
+}
+/*End Day Picker*/
+
+/*Start Login*/
+.loginPage{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+.loginPage:after{
+    content: "";
+    top: -50px;
+    right: -50px;
+    border: 100px solid #ebebff;
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+}
+.loginPage:before{
+    content: "";
+    bottom: -50px;
+    left: -50px;
+    border: 100px solid #ebebff;
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1; 
+}
+.loginBox{
+    position: relative;
+    margin: 0 auto;
+    width: calc(100% - 30px);
+    max-width: 900px;
+    height: 500px;
+    box-shadow: 0 0 20px -5px #d2d2d2;
+    z-index: 2;
+    background: white;
+    border-radius: 30px;
+    overflow: hidden;
+    top: 50%;
+    transform: translate(0%,-50%);
+    display: table;
+}
+.loginBox .logo{
+    position: absolute;
+    left: 25px;
+    top: 20px;
+}
+.loginBox .logo a{
+    font-size: 20px;
+    color: #3d38a0 !important;
+    outline: 0;
+    display: inline-block;
+    text-decoration: none;
+    border: 2px solid #3d38a0;
+    padding: 0;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    border-radius: 50%;
+}
+.loginBox .half{
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+}
+.loginBox .text{
+    background: #efefef;
+    width: 40%;
+}
+.loginBox .action{
+    width: 60%;    
+}
+.loginBox .action > div{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+.loginBox .action > div > div{
+    padding: 50px;
+}
+.loginBox h1{
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 25px;
+    color: #3d38a0;
+}
+.loginBox form{
+    
+}
+.loginBox input.field{
+    width: 100%;
+    border: 0;
+    padding: 10px 20px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    outline: 0;
+    background: #efefef;
+    border-radius: 3px;
+}
+.loginBox button{
+    background: #3d38a0;
+    color: white;
+    border: 0;
+    font-size: 14px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: 0;
+    margin: 0;
+}
+.loginBox button[disabled]{
+    background: #3d38a08f;
+    cursor: not-allowed;
+}
+.loginBox .link{
+
+}
+.loginBox .link a{
+    float: right;
+    font-size: 15px;
+    color: #3d38a0;
+    margin: 10px 0 0;
+    font-weight: 600;
+}
+.loginBox .extraLink{
+    margin: 30px 0 0;
+    padding: 20px 0 0;
+    font-size: 15px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+.loginBox .extraLink a{
+    font-size: 15px;
+    color: #3d38a0;
+    margin: 0 0 0 5px;
+    font-weight: 600;
+    display: inline-block;
+}
+.loginBox .roleOptions{
+    margin: -7px 0 5px 0;
+}
+.loginBox .roleOptions > div{
+    display: inline-block;
+}
+p.error{
+    font-size: 14px;
+    margin: 0 0 10px 0;
+    color: #F44336;
+    font-weight: 500;
+}
+p.success{
+    font-size: 15px;
+    margin: 0 0 10px 0;
+    color: #4eb953;
+    font-weight: 500;
+}
+/*End Login*/
+
+/*Start Admin*/
+.admin{
+    padding: 100px 0 0;
+}
+.admin h1{
+    font-size: 22px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+.btnGroup{
+    display: inline-block;
+}
+.btnGroup button,
+.btnGroup a{
+    background: white;
+    border: 1px solid #3d38a0;
+    color: #3d38a0 !important;
+    border-radius: 3px;
+    padding: 8px 20px !important;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 0 5px 5px 0;
+    outline: 0;
+}
+.btnGroup button.active,
+.btnGroup a.active{
+    background: #3d38a0;
+    color: white !important;
+}
+.inlineHeading{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.inlineHeading h1{
+    margin: 7px 0 0;
+    display: inline-block;
+}
+.inlineHeading input{
+    float: right;
+    width: 250px;
+    border: none;
+    outline: 0;
+    background: #f3f3f3;
+    font-size: 14px;
+    padding: 10px 20px;
+}
+.topLinks{
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: right;
+}
+.topLinks li{
+    display: inline-block;
+    margin: 0 10px 0 0;
+}
+.topLinks a{
+    background: #3d38a0;
+    border-radius: 3px;
+    color: white !important;
+    font-weight: 400;
+    padding: 8px 20px !important;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+.topLinks a.edit{
+    background: white;
+    border: 1px solid #3d38a0;
+    padding: 7px 20px !important;
+    color: #3d38a0 !important;
+}
+.tableBox{
+    margin-bottom: 30px;
+}
+.tableBox table{
+    font-size: 14px;
+    margin: 0;
+    overflow: hidden;
+}
+.tableBox thead{
+    background: #f3f3f3;
+}
+.tableBox table thead th{
+    white-space: nowrap;
+}
+.tableBox table img{
+    height: 50px;
+}
+.tableBox a.edit{
+    font-size: 13px;
+    color: #505050 !important;
+    text-decoration: none;
+    padding: 0 4px;
+}
+.tableBox a.view{
+    color: #312e89 !important;
+}
+.tableBox button{
+    padding: 0 4px;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    font-size: 13px;
+}
+.tableBox button.del{
+    color: #F44336;
+}
+.tableBox button.view{
+    color: #312e89;
+}
+.tableBox table th:first-child{
+    width: 70px;
+}
+.tableBox table th:last-child{
+    width: 90px;
+}
+.cap{
+    text-transform: capitalize;
+}
+.form{
+    margin-bottom: 30px;
+    background: #ffffff;
+    padding: 60px;
+    box-shadow: 0 0 20px -3px #dedede;
+}
+.form .label{
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.form .field{
+    width: 100%;
+    background: #f3f3f3;
+    border: 0;
+    outline: 0;
+    font-size: 14px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+.form .button{
+    background: #3d38a0;
+    border: 0;
+    color: white;
+    font-size: 14px;
+    padding: 10px 20px;
+    outline: 0;
+    border-radius: 3px;
+}
+.form .button[disabled]{
+    background: #3d38a08f;
+    cursor: not-allowed;
+}
+.form img{
+    max-width: 100%;
+    margin-bottom: 10px;
+}
+.paginationBlock{
+
+}
+.pagination{
+    margin-bottom: 30px;
+}
+.pagination li{
+
+}
+.pagination li a{
+    color: #514e96;
+    border-color: #514e96;
+    font-size: 14px;
+    padding: 10px 15px;
+    box-shadow: none !important;
+}
+.pagination li a:hover{
+    background: #514e96;
+    color: white;
+    border: 1px solid #514e96;
+}
+/*End Admin*/
+
+/*Start View Profile*/
+.viewBox{
+    background: #f3f3f3;
+    padding: 60px;
+    margin-bottom: 30px;
+}
+.viewBox ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 15px;
+    line-height: 35px;
+}
+.viewBox li{
+
+}
+.viewBox li b{
+    display: inline-block;
+    min-width: 100px;
+}
+.react-fancybox{
+    margin-bottom: 10px;
+}
+.viewBox li > .react-fancybox{
+    display: inline-block;
+    margin: 0;
+}
+.react-fancybox > .thumbnail > img{
+    width: 100%;
+    cursor: pointer;
+}
+.viewBox li > .react-fancybox > .thumbnail > img{
+    width: 100px;
+    margin-bottom: 10px;
+}
+.react-fancybox .box{
+    z-index: 999;
+}
+.react-fancybox .box .image-box{
+    width: calc(100% - 30px);
+    max-width: 900px;
+    padding: 10px;
+    height: auto;
+}
+.react-fancybox img[alt="original"]{
+    height: auto;
+    max-height: calc(100vh - 150px) !important;
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+/*End View Profile*/
+
+/*start React Select*/
+.css-2b097c-container{
+    margin-bottom: 10px;
+    font-size: 14px !important;
+}
+.css-yk16xz-control,
+.css-1pahdxg-control:hover{
+    border-color: #ddd !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    min-height: 45px !important;
+}
+.css-1pahdxg-control{
+    border-radius: 0 !important;
+    min-height: 45px !important;
+}
+.css-1hwfws3{
+    padding: 0 15px !important;
+}
+/*end React Select*/
+
+/*Responsive*/
+@media (max-width: 1100px){
+    .landing{
+        height: 500px;
+        min-height: auto;
+    }
+    .landing .rightImg {
+        object-fit: cover;
+    }
+}
+@media (max-width: 992px){
+    .landing .content {
+        width: 100%;
+    }
+    header {
+        background: white;
+    }
+}
+@media (max-width: 768px){
+    .landing .rightImg {
+        object-fit: contain;
+        object-position: bottom;
+    }
+    .landing .content h1,
+    .services h2,
+    .about h2 ,
+    .contact h2{
+        font-size: 20px;
+    }
+    .landing .content ul {
+        font-size: 14px;
+        line-height: 27px;
+    }
+    .services h3 {
+        font-size: 15px;
+    }
+    .services p ,
+    .about p,
+    .about ul{
+        font-size: 14px;
+        line-height: 25px;
+    }
+    .contact .map {
+        height: 300px;
+        margin: 20px 0 -40px;
+    }
+    .contact .map iframe {
+        position: static;
+        padding-left: 0;
+        width: 100%;
+    }
+    footer ul {
+        text-align: center;
+    }
+    footer p {
+        margin: 0 0 10px 0;
+        font-size: 14px;
+        text-align: center;
+    }
+    .contact{
+        background: white;
+        padding-top: 0;
+    }
+    .loginBox .text {
+        display: none;
+    }
+    .loginBox .action {
+        width: 100%;
+        height: auto;
+    }
+    .loginBox {
+        height: auto;
+        top: 0%;
+        transform: translate(0%,0%);
+        display: block;
+        margin: 15px auto;
+    }
+    .loginBox .action > div > div {
+        width: 100%;
+    }
+    .tableBox{
+        overflow-x: auto;
+    }
+    .inlineHeading input {
+        float: none;
+        margin: 10px 0 0;
+    }
+}
+@media (max-width: 576px){
+    .landing .rightImg {
+        object-fit: contain;
+        object-position: bottom;
+    }
+    .estimateForm input {
+        width: 50%;
+    }
+    .estimateForm button {
+        width: 100%;
+    }
+    .contact .map {
+        margin: 20px -15px -70px;
+        width: calc(100% + 30px);
+    }
+    .loginBox h1 {
+        font-size: 20px;
+    }
+    .loginBox input.field {
+        font-size: 14px;
+    }
+    .custom-control-label {
+        font-size: 14px;
+    }
+    .custom-control-label::before {
+        top: 3px;
+    }
+    .loginBox .extraLink {
+        margin: 20px 0 0;
+        padding: 15px 0 0;
+        font-size: 14px;
+    }
+    .loginBox .extraLink a {
+        font-size: 14px;
+    }
+    .loginPage {
+        height: auto;
+        min-height: 100vh;
+    }
+    .loginBox .link a {
+        font-size: 14px;
+    }
+    .loginBox .action > div > div {
+        padding: 80px 35px 50px;
+    }
+    .inlineHeading input {
+        width: 100%;
+    }
+    .form {
+        padding: 0;
+        box-shadow: none;
+    }
+    .viewBox {
+        background: #ffffff;
+        padding: 0;
+    }
+}

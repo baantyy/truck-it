@@ -1,5 +1,5 @@
 const adminAccess = function(req, res, next) {    
-    if(req.user.role === "admin"){
+    if(['admin'].includes(req.user.role)){
         next()
     }else{
         res.status("403").send({error: "the page does not exist" })
@@ -7,7 +7,7 @@ const adminAccess = function(req, res, next) {
 }
 
 const vendorAccess = function(req, res, next) {    
-    if(req.user.role === "vendor" || req.user.role === "admin"){
+    if(['admin','vendor'].includes(req.user.role)){
         next()
     }else{
         res.status("403").send({error: "the page does not exist" })
@@ -15,7 +15,7 @@ const vendorAccess = function(req, res, next) {
 }
 
 const customerAccess = function(req, res, next) {    
-    if(req.user.role === "customer" || req.user.role === "admin"){
+    if(['admin','customer'].includes(req.user.role)){
         next()
     }else{
         res.status("403").send({error: "the page does not exist" })

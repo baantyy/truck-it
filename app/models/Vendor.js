@@ -1,69 +1,84 @@
-const mongoose= require("mongoose")
-const uniqueValidator= require("mongoose-unique-validator")
+const mongoose = require("mongoose")
+const uniqueValidator = require('mongoose-unique-validator')
+const validator = require("validator")
 
 const Schema = mongoose.Schema
-
-//Creation of Vendor Schema
 const vendorSchema = new Schema({
     user: {
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId, 
         ref: 'User'
     },
-    reviews: [
-        {
-            user: {
-                type: Schema.Types.ObjectId,
-                ref: 'User'
-            },
-            rating: {
-                type: Number,
-                min: 0,
-                max: 5,
-                default: 0
-            },
-            feedback: {
-                type: String
-            }
-        }
-    ],
     address: {
-        type: String
+        full: String,
+        pincode: String
     },
     payment: {
-        bank_account:{
-            name:{
-                type: String
-            },
-            account_number: {
-                type: Number
-            },
-            IFSC_code: {
-                type: String
-            },
-            branch: {
-                type: String
-            }
-        },
-        paytm: {
-                type: String
+        bank_account: {
+            number: String,
+            ifsc: String
         }
-
     },
     document: {
-        type: String,
+        pan: String,
+        aadhar: String
     },
     isVerified: {
-        type: String,
+        type: Boolean,
         default: false
-    }
+    },
+    reviews: [{
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        rating: Number,
+        feedback: {
+            type: String,
+            maxlength: 1000
+        }
+    }],
+    vehicles: [{
+        vehicle: {
+            type: Schema.Types.ObjectId,
+            ref: 'Vehicle',
+            required: [true, 'Vehicle is required']
+        },
+        number_plate: {
+            type: String,
+            required: [true, 'Number plate is required']
+        },
+        pricing: {
+            inter_city: {
+                ratePerKm: {
+                    type: Number,
+                    required: [true, 'Intercity rate is required']
+                },
+                ratePerMin: {
+                    type: Number,
+                    required: [true, 'Intercity rate is required']
+                }
+            },
+            intra_city: {
+                ratePerKm: {
+                    type: Number,
+                    required: [true, 'Intracity rate is required']
+                },
+                ratePerMin: {
+                    type: Number,
+                    required: [true, 'Intracity rate is required']
+                }
+            }
+        },
+        helper_rate: {
+            type: Number,
+            required: [true, 'Helper rate is required']
+        }
+    }]
 })
 
-vendorSchema.plugin(uniqueValidator, { message: '{PATH} already present'})
+vendorSchema.plugin(uniqueValidator, { message: '{PATH} already exists' })
 
-//Creation of Vendor Model
-const Vendor= mongoose.model('Vendor', vendorSchema)
-
-module.exports= {
+const Vendor = mongoose.model("Vendor",vendorSchema)
+module.exports = {
     Vendor
 }
-
