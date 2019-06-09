@@ -8,8 +8,6 @@ import { Link } from 'react-router-dom'
 
 import { addBooking } from '../../actions/Booking'
 
-//import { addBooking } from '../../actions/Booking'
-
 class Landing extends React.Component {
     constructor(props){
         super(props)
