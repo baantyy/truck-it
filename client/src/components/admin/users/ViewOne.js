@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import FancyBox from 'react-fancybox'
 
 import AuthHeader from "../../common/AuthHeader"
-import { fileUrl } from "../../../config/config"
 
 class ViewOne extends React.Component{
     constructor(props){
@@ -117,16 +116,16 @@ class ViewOne extends React.Component{
                                                     <li className="img">
                                                         <b>PAN</b> :&nbsp;
                                                         { business.document && business.document.pan && 
-                                                        <FancyBox thumbnail={fileUrl + business.document.pan}
-                                                                  image={fileUrl + business.document.pan}
+                                                        <FancyBox thumbnail={business.document.pan}
+                                                                  image={business.document.pan}
                                                         />}
                                                     </li>
 
                                                     <li>
                                                         <b>Aadhar</b> :&nbsp;
                                                         { business.document && business.document.aadhar && 
-                                                        <FancyBox thumbnail={fileUrl + business.document.aadhar} 
-                                                            image={fileUrl + business.document.aadhar} 
+                                                        <FancyBox thumbnail={business.document.aadhar} 
+                                                            image={business.document.aadhar} 
                                                         /> }
                                                     </li>
                                                 </ul>

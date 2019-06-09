@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 import Select from 'react-select'
-import { fileUrl } from "../../../config/config"
 
 class Form extends React.Component{
     constructor(props){
@@ -179,7 +178,7 @@ class Form extends React.Component{
                                 <li><b>Name</b> : { showVehicle.name }</li>
                                 <li><b>Dimension</b> : { showVehicle.dimension._length + 'ft. x' + showVehicle.dimension._breadth + 'ft. x' + showVehicle.dimension._height + 'ft.'  }</li>
                                 <li><b>Capacity</b> : { showVehicle.capacity + 'Kg' }</li>
-                                <li><img src={ fileUrl + showVehicle.image } alt="" style={{width: '100%', marginTop: '20px'}} /></li>
+                                <li><img src={ showVehicle.image } alt="" style={{width: '100%', marginTop: '20px'}} /></li>
                             </ul>
                         </div>
                     }

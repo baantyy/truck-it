@@ -230,18 +230,23 @@ header.bg{
 .modal-header .close{
     outline: 0;
 }
-.modal-footer button{
+.modal-footer button,
+.modal-footer a{
     margin: 0;
     background: transparent !important;
     border: 0 !important;
     box-shadow: none !important;
     color: black !important;
     font-size: 15px;
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 10px;
 }
 .modal-footer button.left{
     float: left;
 }
-.modal-footer button i{
+.modal-footer button i,
+.modal-footer a i{
     background: #312e89;
     color: white;
     padding: 8px 0;
@@ -249,6 +254,7 @@ header.bg{
     width: 30px;
     height: 30px;
     margin: 0 5px;
+    text-align: center;
 }
 .chooseDate{
     text-align: center;
@@ -293,9 +299,18 @@ header.bg{
     margin-bottom: 30px;
     cursor: pointer;
     transition: all .5s ease-in-out;
+    position: relative;
 }
-.chooseVehicle .item:hover{
-    border-color: #9c9c9c;
+.chooseVehicle .item.active:after{
+    content: "\f058";
+    font-weight: 900;
+    font-family: "Font Awesome 5 Free";
+    color: #312e89;
+    position: absolute;
+    top: -7px;
+    left: -1px;
+    font-size: 30px;
+    width: 30px;
 }
 .chooseVehicle h3{
     font-size: 15px;
@@ -318,10 +333,6 @@ header.bg{
     font-size: 15px;
     font-weight: bold;
     transition: all .5s ease-in-out;
-}
-.chooseVehicle .item:hover .estimateCost{
-    border-color: #9c9c9c;
-    background: #e4e4e4;
 }
 /*End Modal*/
 
@@ -821,7 +832,7 @@ p.success{
 .form{
     margin-bottom: 30px;
     background: #ffffff;
-    padding: 60px;
+    padding: 55px;
     box-shadow: 0 0 20px -3px #dedede;
 }
 .form .label{
@@ -933,7 +944,7 @@ p.success{
 }
 /*End View Profile*/
 
-/*start React Select*/
+/*Start React Select*/
 .css-2b097c-container{
     margin-bottom: 10px;
     font-size: 14px !important;
@@ -952,7 +963,27 @@ p.success{
 .css-1hwfws3{
     padding: 0 15px !important;
 }
-/*end React Select*/
+/*End React Select*/
+
+/*Start React Date Picker*/
+.react-datepicker-wrapper{
+    width: 100%;
+}
+.react-datepicker__input-container{
+    width: 100%;
+}
+.react-datepicker__input-container input{
+    width: 100%;
+    border-radius: 0;
+    font-size: 14px;
+    padding: 10px 15px;
+    height: auto;
+    box-shadow: none;
+    border: 1px solid #dee2e6;
+    margin-bottom: 15px;
+    outline: 0 !important;
+}
+/*End React Date Picker*/
 
 /*Responsive*/
 @media (max-width: 1100px){

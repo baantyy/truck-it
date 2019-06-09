@@ -11,7 +11,10 @@ import Login from "./components/auth/Login"
 import Logout from "./components/auth/Logout"
 import Register from "./components/auth/Register"
 
-import CustomerBookings from "./components/customer/Bookings"
+import CustomerViewAllBookings from "./components/customer/bookings/ViewAll"
+import CustomerViewOneBooking from "./components/customer/bookings/ViewOne"
+import CustomerAddBooking from "./components/customer/bookings/Add"
+
 import CustomerProfile from "./components/customer/MyProfile"
 
 import VendorBookings from "./components/vendor/Bookings"
@@ -47,7 +50,10 @@ const App = (props) => {
                     <Route path="/register" component={Register} exact={true} />
                     <Route path="/logout" component={Logout} exact={true} />
 
-                    <CustomerRoute path="/customer" component={CustomerBookings} exact={true} />
+                    <CustomerRoute path="/customer" component={CustomerViewAllBookings} exact={true} />
+                    <CustomerRoute path="/customer/bookings/add" component={CustomerAddBooking} exact={true} />
+                    <CustomerRoute path="/customer/bookings/:id" component={CustomerViewOneBooking} exact={true} />
+
                     <CustomerRoute path="/customer/my-profile" component={CustomerProfile} exact={true} />
 
                     <VendorRoute path="/vendor" component={VendorBookings} exact={true} />

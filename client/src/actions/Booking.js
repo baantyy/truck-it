@@ -4,3 +4,9 @@ export const addBooking = (booking) => {
         payload: booking
     }
 }
+
+export const removeBooking = () => {
+    return {
+        type: 'REMOVE_BOOKING'
+    }
+}

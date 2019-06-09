@@ -30,6 +30,10 @@ const vehicleSchema = new Schema({
     capacity:  {
         type: String,
         required: [true, 'Capacity is required']
+    },
+    price: {
+        type: Number,
+        required: [true, 'Price is required']
     }
 })
 

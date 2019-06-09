@@ -3,6 +3,10 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { Modal, Button, Form } from 'react-bootstrap'
 import DayPicker from 'react-day-picker'
+import $ from 'jquery'
+import { Link } from 'react-router-dom'
+
+import { addBooking } from '../../actions/Booking'
 
 //import { addBooking } from '../../actions/Booking'
 
@@ -12,6 +16,13 @@ class Landing extends React.Component {
         this.state = {
             pickup: "",
             dropoff: "",
+            pickup_date: undefined,
+            distance: {},
+            duration: {},
+            volume: "",
+            truck: "",
+            amount: "",
+
             focusedInput: "",
             places: {
                 status: ""
@@ -20,52 +31,30 @@ class Landing extends React.Component {
             error: "",
             modalShow: false,
             modalStep: 1,
-            estimate: {
-                distance: "",
-                duration: "",
-                date: undefined,
-                itemVolume: ""
-            },
-            vehicles: [
-                {
-                    name: "TATA ACE",
-                    image: "trucking.png",
-                    dimension: {
-                        length: 7,
-                        breadth: 5,
-                        height: 5
-                    },
-                    capacity: 750,
-                    cost: 1200
-                },
-                {
-                    name: "TATA ACE 2",
-                    image: "shipped.png",
-                    dimension: {
-                        length: 7,
-                        breadth: 5,
-                        height: 5
-                    },
-                    capacity: 1250,
-                    cost: 2300
-                },
-                {
-                    name: "TATA ACE 3",
-                    image: "present.png",
-                    dimension: {
-                        length: 7,
-                        breadth: 5,
-                        height: 5
-                    },
-                    capacity: 2550,
-                    cost: 4200
-                }
+            vehicles: [],
+            volumes: [
+                { name: "Few Items", price: 5 },
+                { name: "1 BHK", price: 10 },
+                { name: "2 BHK", price: 20 },
+                { name: "3 BHK", price: 30 },
+                { name: "4 BHK", price: 40 },
+                { name: "Custom", price: 50 }
             ]
         }
     }
 
     componentDidMount(){
-        //api to get vehicles + estimate
+        axios.get("/api/users/vehicles")
+            .then(res => {
+                this.setState(() => ({
+                    vehicles: res.data
+                }))
+            })
+        
+        $(document).on("click", ".chooseVehicle .item", function(){
+            $(this).addClass("active")
+            $(this).parent(".col-sm-6").siblings().find(".item").removeClass("active")
+        })
     }
 
     handleChange = (e) => {
@@ -76,15 +65,14 @@ class Landing extends React.Component {
             error: ""
         }))
 
-        // if(['pickup','dropoff'].includes(e.target.name)){
-        //     axios.get(`/api/location/place/${e.target.value}`)
-        //         .then(res => {
-        //             this.setState(() => ({
-        //                 places: res.data
-        //             }))
-        //             //console.log(res.data)
-        //         })
-        // }
+        if(['pickup','dropoff'].includes(e.target.name)){
+            axios.get(`/api/location/place/${e.target.value}`)
+                .then(res => {
+                    this.setState(() => ({
+                        places: res.data
+                    }))
+                })
+        }
     }
 
     handleSubmit = (e) => {
@@ -102,44 +90,39 @@ class Landing extends React.Component {
     }
 
     getDistance = () => {
-        //const { pickup, dropoff } = this.state
-        // axios.get(`/api/location/distance/${pickup}/${dropoff}`)
-        //     .then(res => {
-        //         if(res.data.rows.length){
-        //             if(res.data.rows[0].elements[0].status === "OK"){
-        //                 this.setState(() => ({
-        //                     estimateBtnLoading: false,
-        //                     estimate: {
-        //                         distance: res.data.rows[0].elements[0].distance.text,
-        //                         duration: res.data.rows[0].elements[0].duration.text
-        //                     },
-        //                     modalStep: 1
-        //                 }))
-        //                 this.modalOpen()
-        //                 console.log(res.data.rows[0].elements[0].distance)
-        //             }else{
-        //                 this.setState(() => ({
-        //                     estimateBtnLoading: false,
-        //                     error: "Service not available for these locations"
-        //                 }))
-        //             }
-        //         }else{
-        //             this.setState(() => ({
-        //                 error: "Service not available for these locations"
-        //             }))
-        //         }
-        //     })
-        this.setState(() => ({
-            estimate: {
-                distance: "",
-                duration: "",
-                date: undefined,
-                itemVolume: ""
-            },
-            estimateBtnLoading: false,
-            modalStep: 1
-        }))
-        this.modalOpen()
+        const { pickup, dropoff } = this.state
+        axios.get(`/api/location/distance/${pickup}/${dropoff}`)
+            .then(res => {
+                if(res.data.rows.length){
+                    if(res.data.rows[0].elements[0].status === "OK"){
+                        this.setState(() => ({
+                            estimateBtnLoading: false,
+                            distance: res.data.rows[0].elements[0].distance,
+                            duration: res.data.rows[0].elements[0].duration,
+                            pickup_date: undefined,
+                            modalStep: 1
+                        }))
+                        if((res.data.rows[0].elements[0].distance.value / 1000) <= 200){
+                            this.modalOpen()
+                        }else{
+                            this.setState(() => ({
+                                estimateBtnLoading: false,
+                                error: "Service not available for these locations"
+                            }))
+                        }
+                    }else{
+                        this.setState(() => ({
+                            estimateBtnLoading: false,
+                            error: "Service not available for these locations"
+                        }))
+                    }
+                }else{
+                    this.setState(() => ({
+                        estimateBtnLoading: false,
+                        error: "Service not available for these locations"
+                    }))
+                }
+            })
     }
 
     updateAddress = (value) => {
@@ -160,8 +143,8 @@ class Landing extends React.Component {
     }
 
     handleDayClick = (date) => {
-        this.setState((prevState) => ({
-            estimate: {...prevState.estimate, ...{date}}
+        this.setState(() => ({
+            pickup_date: date
         }))
     }
 
@@ -170,16 +153,29 @@ class Landing extends React.Component {
     }
 
     handleRadioChange = (volume) => {
-        this.setState((prevState) => ({
-            estimate: {...prevState.estimate, ...{itemVolume: volume}}
+        this.setState(() => ({
+            volume
         }))
+    }
+
+    handleSelectTruck = (truck, amount) => {
+        const { pickup, dropoff, pickup_date, volume, distance, duration } = this.state
+        this.setState(() => ({
+            truck, amount
+        }))
+        const bookingData = {
+            pickup, dropoff, pickup_date, volume: volume.name, distance, duration, truck, amount
+        }
+        this.props.dispatch(addBooking(bookingData))
     }
 
     render(){
         var twoMonths = new Date()
         twoMonths.setMonth(twoMonths.getMonth() + 2)
-        const { pickup, dropoff, estimateBtnLoading, places, error, modalShow, modalStep, estimate, vehicles } = this.state
-        const { screen } = this.props
+        const { pickup, dropoff, pickup_date, volume, estimateBtnLoading, places, error, modalShow, modalStep, vehicles, volumes, distance, truck } = this.state
+        const { screen, user } = this.props
+        const loginMsg = user.status === "false" ? "Login to continue " : "Book Now "
+        const userRole = user.status === "true" ? user.role === "customer" ? true : false : true
         return (
             <React.Fragment>
                 <div className="landing">
@@ -248,10 +244,10 @@ class Landing extends React.Component {
                                                     after: twoMonths
                                                 }}
                                         />
-                                    { estimate.date && <p>{estimate.date.toLocaleDateString('en-GB')}</p> }
+                                    { pickup_date && <p>{pickup_date.toLocaleDateString('en-GB')}</p> }
                                 </div>
                             </Modal.Body>
-                            { estimate.date &&
+                            { pickup_date &&
                                 <Modal.Footer>
                                     <Button className="right"
                                             onClick={() => {
@@ -270,19 +266,19 @@ class Landing extends React.Component {
                             <Modal.Body>
                                 <div className="chooseVolume">
                                     <Form>
-                                        {['Few Items','1 BHK','2 BHK','3 BHK','4 BHK','Custom'].map((item, index) => {
+                                        {volumes.map((item, index) => {
                                             return (
                                                 <Form.Check
                                                     key={index}
                                                     custom
-                                                    label={item}
+                                                    label={item.name}
                                                     type="radio"
-                                                    name="itemVolume"
+                                                    name="volume"
                                                     id={`choose-item-${index}`}
                                                     onChange={() => {
                                                         this.handleRadioChange(item)
                                                     }}
-                                                    checked={estimate.itemVolume === item ? true : false}
+                                                    checked={volume === item ? true : false}
                                                 />
                                             )
                                         })}
@@ -295,7 +291,7 @@ class Landing extends React.Component {
                                             this.changeModalStep(1)
                                         }}                                
                                 ><i className="fas fa-angle-left"></i> Go Back</Button>
-                                { estimate.itemVolume && 
+                                { volume && 
                                     <Button className="right"                                        
                                             onClick={() => {
                                                 this.changeModalStep(3)
@@ -313,16 +309,21 @@ class Landing extends React.Component {
                             <Modal.Body>
                                 <div className="chooseVehicle">
                                     <div className="row">
-                                        {vehicles.map((vehicle, index) => {
+                                        {vehicles.map(vehicle => {
+                                            const estimatedCost = parseInt((vehicle.price * (distance.value / 1000) * volume.price))
                                             return (
-                                                <div key={index} className="col-sm-6">
-                                                    <div className="item">
+                                                <div key={vehicle._id} className="col-sm-6">
+                                                    <div className={`item ${vehicle._id === truck ? 'active' : ''}`}
+                                                         onClick={() => {
+                                                             this.handleSelectTruck(vehicle._id, estimatedCost)
+                                                         }}
+                                                        >
                                                         <h3>{ vehicle.name }</h3>
-                                                        <img src={`img/${ vehicle.image }`} alt="" />
+                                                        <img src={vehicle.image} alt="" />
                                                         <p>Capacity: <b>{ vehicle.capacity } kgs</b></p>
-                                                        <p>Size (LxBxH): <b>{`${vehicle.dimension.length}ft x ${vehicle.dimension.breadth}ft x ${vehicle.dimension.height}ft`}</b></p>
+                                                        <p>Size (LxBxH): <b>{`${vehicle.dimension._length}ft x ${vehicle.dimension._breadth}ft x ${vehicle.dimension._height}ft`}</b></p>
 
-                                                        <div className="estimateCost"><i className="fas fa-rupee-sign"></i> {`${vehicle.cost}/-`}</div>
+                                                        <div className="estimateCost"><i className="fas fa-rupee-sign"></i> {`${estimatedCost}/-`}</div>
                                                     </div>
                                                 </div>
                                             )
@@ -336,6 +337,8 @@ class Landing extends React.Component {
                                             this.changeModalStep(2)
                                         }}                                
                                 ><i className="fas fa-angle-left"></i> Go Back</Button>
+
+                                { (truck && userRole) && <Link className="right" to="/login">{loginMsg} <i className="fas fa-angle-right"></i></Link> }
                                 
                             </Modal.Footer>
                         </React.Fragment>

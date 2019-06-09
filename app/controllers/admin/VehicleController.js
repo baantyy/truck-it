@@ -33,10 +33,11 @@ router.get("/:id", auth, adminAccess, (req,res) => {
 
 //localhost:3005/admin/vehicles
 router.post("/", auth, adminAccess, upload.single("image"), (req,res) => {
-    const { name, capacity, _length, _breadth, _height, image } = req.body
+    const { name, capacity, _length, _breadth, _height, image, price } = req.body
     const body = {
         name,
         capacity,
+        price,
         image: req.file ? req.file.location || req.file.filename : image,
         dimension: {
             _length, _breadth, _height
@@ -55,10 +56,11 @@ router.post("/", auth, adminAccess, upload.single("image"), (req,res) => {
 //localhost:3005/admin/vehicles/:id
 router.put("/:id", auth, adminAccess, upload.single("image"), (req,res) => {
     const id = req.params.id
-    const { name, capacity, _length, _breadth, _height, image } = req.body
+    const { name, capacity, _length, _breadth, _height, image, price } = req.body
     const body = {
         name,
         capacity,
+        price,
         image: req.file ? req.file.location || req.file.filename : image,
         dimension: {
             _length, _breadth, _height

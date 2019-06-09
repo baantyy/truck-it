@@ -20,6 +20,13 @@ class Login extends React.Component{
         document.title = "Login"
     }
 
+    componentWillMount(){
+        const { user, history } = this.props
+        if(user.status === "true"){
+            history.push(`/${user.role}`)
+        }
+    }
+
     handleChange = (e) => {
         e.persist()
         this.setState(() => ({

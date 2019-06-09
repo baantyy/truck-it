@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 
 import AuthHeader from "../../common/AuthHeader"
-import { fileUrl } from "../../../config/config"
 
 class ViewAll extends React.Component {
     constructor(props){
@@ -112,6 +111,7 @@ class ViewAll extends React.Component {
                                             <th>Image</th>
                                             <th>Dimension</th>
                                             <th>Capacity</th>
+                                            <th>Price (Per KM)</th>
                                             <th>Total</th>
                                             <th>Action</th>
                                         </tr>
@@ -123,9 +123,10 @@ class ViewAll extends React.Component {
                                                     <tr key={ vehicle._id }>
                                                         <td>{ index + 1 }</td>
                                                         <td>{ vehicle.name }</td>
-                                                        <td>{ vehicle.image && <img src={fileUrl + vehicle.image} alt="" /> }</td>
+                                                        <td>{ vehicle.image && <img src={vehicle.image} alt="" /> }</td>
                                                         <td>{ (vehicle.dimension && vehicle.dimension._length && vehicle.dimension._breadth && vehicle.dimension._height) && vehicle.dimension._length + ' ft. x ' + vehicle.dimension._breadth + ' x ft. ' + vehicle.dimension._height + ' ft. ' }</td>
                                                         <td>{ vehicle.capacity && (vehicle.capacity + ' kg') }</td>
+                                                        <td>{ vehicle.price }</td>
                                                         <td>{ vehicle.count }</td>
                                                         <td>
                                                             <Link className="edit" 
@@ -142,7 +143,7 @@ class ViewAll extends React.Component {
                                                         </td>
                                                     </tr>
                                                 )
-                                            }) : <tr><td colSpan="7" className="text-center">No Vehicles Found</td></tr>
+                                            }) : <tr><td colSpan="8" className="text-center">No Vehicles Found</td></tr>
                                         }
                                     </tbody>
                                 </table>

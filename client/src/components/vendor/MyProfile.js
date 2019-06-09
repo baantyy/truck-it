@@ -5,7 +5,6 @@ import FancyBox from 'react-fancybox'
 
 import AuthHeader from "../common/AuthHeader"
 import { updateUser } from "../../actions/User"
-import { fileUrl } from "../../config/config"
 
 class Edit extends React.Component{
     constructor(props){
@@ -311,8 +310,8 @@ class Edit extends React.Component{
                                                     </div>
                                                     <div className="col-md-5">
                                                         { business._pan && 
-                                                            <FancyBox thumbnail={fileUrl + business._pan}
-                                                                    image={fileUrl + business._pan} 
+                                                            <FancyBox thumbnail={business._pan}
+                                                                    image={business._pan} 
                                                                 />
                                                         }
                                                     </div>
@@ -326,8 +325,8 @@ class Edit extends React.Component{
                                                     </div>
                                                     <div className="col-md-5">
                                                         { business._aadhar && 
-                                                            <FancyBox thumbnail={fileUrl + business._aadhar} 
-                                                                image={fileUrl + business._aadhar} 
+                                                            <FancyBox thumbnail={business._aadhar} 
+                                                                image={business._aadhar} 
                                                             />
                                                         }
                                                     </div>
