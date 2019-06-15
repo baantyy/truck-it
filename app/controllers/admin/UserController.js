@@ -18,6 +18,17 @@ router.get("/", auth, adminAccess, (req,res) => {
         })
 })
 
+//localhost:3005/admin/users/role/vendor
+router.get("/role/vendor", auth, adminAccess, (req,res) => {
+    User.find({role: 'vendor'}).select(["fullname", "email"])
+        .then(vendors => {
+            res.send(vendors)
+        })
+        .catch(err => {
+            res.send(err)
+        })
+})
+
 //localhost:3005/admin/users/:id
 router.get("/:id", auth, adminAccess, (req,res) => {
     const id = req.params.id

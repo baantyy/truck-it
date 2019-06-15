@@ -73,7 +73,7 @@ router.get("/token/:id", (req,res) => {
 //localhost:3005/users/update_profile
 router.put("/update_profile", auth, (req,res) => {
     const id = req.user._id
-    const body = _.pick(req.body,["fullname","mobile","email","password"])
+    const body = _.pick(req.body,["fullname","password"])
     body.password.length > 0 ? body.passUpdate = true : delete body.password
     User.findByIdAndUpdate(id, body, {new: true, runValidators: true, context: 'query'})
         .then(user => {

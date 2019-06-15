@@ -45,7 +45,7 @@ class MyProfile extends React.Component{
 
     handleSubmit = (e) => {
         e.preventDefault()
-        const { fullname, email, new_password, confirm_password, mobile } = this.state.customer
+        const { fullname, new_password, confirm_password } = this.state.customer
         const { user } = this.props
         if(new_password === confirm_password){
             this.setState(() => ({
@@ -54,9 +54,7 @@ class MyProfile extends React.Component{
             }))
             const formdata = {
                 fullname,
-                email,
-                password: new_password,
-                mobile
+                password: new_password
             }
             axios.put(`/api/users/update_profile`,formdata,{
                     headers: { 'x-auth': user.token }
@@ -117,23 +115,17 @@ class MyProfile extends React.Component{
 
                                                 <label className="label">Email Id</label>
                                                 <input type="email"
-                                                       placeholder="Email Id"
                                                        className="field"
                                                        value={customer.email}
-                                                       onChange={this.handleChange}
-                                                       name="email" 
+                                                       disabled
                                                     />
-                                                { errors.email && <p className="error">{ errors.email.message }</p> }
                                                 
                                                 <label className="label">Mobile</label>
                                                 <input type="text"
-                                                       placeholder="Mobile"
                                                        className="field"
                                                        value={customer.mobile}
-                                                       onChange={this.handleChange}
-                                                       name="mobile" 
+                                                       disabled
                                                     />
-                                                { errors.mobile && <p className="error">{ errors.mobile.message }</p> }
 
                                                 <label className="label">New Password</label>
                                                 <input type="password"

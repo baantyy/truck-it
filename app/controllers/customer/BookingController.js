@@ -35,7 +35,7 @@ router.post("/", auth, customerAccess, (req, res) => {
 
 //localhost:3005/users/bookings/:id
 router.put("/:id", auth, customerAccess, (req, res) => {
-    const body = _.pick(req.body,["distance", "duration", "amount"])
+    const body = _.pick(req.body,["status"])
     const id = req.params.id
     Booking.findOneAndUpdate({user: req.user._id, _id: id}, body, {new: true, runValidators: true})
         .then(booking => {

@@ -82,7 +82,7 @@ class Edit extends React.Component{
 
     handlePersonalSubmit = (e) => {
         e.preventDefault()
-        const { fullname, email, new_password, confirm_password, mobile } = this.state.vendor
+        const { fullname, new_password, confirm_password } = this.state.vendor
         const { user } = this.props
         if(new_password === confirm_password){
             this.setState(() => ({
@@ -91,9 +91,7 @@ class Edit extends React.Component{
             }))
             const formdata = {
                 fullname,
-                email,
-                password: new_password,
-                mobile
+                password: new_password
             }
             axios.put(`/api/users/update_profile`,formdata,{
                     headers: { 'x-auth': user.token }
@@ -208,23 +206,17 @@ class Edit extends React.Component{
 
                                                 <label className="label">Email Id</label>
                                                 <input type="email"
-                                                       placeholder="Email Id"
                                                        className="field"
                                                        value={vendor.email}
-                                                       onChange={this.handlePersonalChange}
-                                                       name="email" 
+                                                       disabled
                                                     />
-                                                { personalErrors.email && <p className="error">{ personalErrors.email.message }</p> }
                                                 
                                                 <label className="label">Mobile</label>
                                                 <input type="text"
-                                                       placeholder="Mobile"
                                                        className="field"
                                                        value={vendor.mobile}
-                                                       onChange={this.handlePersonalChange}
-                                                       name="mobile" 
+                                                       disabled
                                                     />
-                                                { personalErrors.mobile && <p className="error">{ personalErrors.mobile.message }</p> }
 
                                                 <label className="label">New Password</label>
                                                 <input type="password"

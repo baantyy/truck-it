@@ -10,10 +10,10 @@ const Footer = (props) => {
                     </div>
                     <div className="col-md-6">
                         <ul>
-                            <li><a href="/" target="_blank"><i className="fab fa-facebook-f"></i></a></li>
-                            <li><a href="/" target="_blank"><i className="fab fa-whatsapp"></i></a></li>
-                            <li><a href="/" target="_blank"><i className="fab fa-linkedin-in"></i></a></li>
-                            <li><a href="/" target="_blank"><i className="fab fa-instagram"></i></a></li>
+                            <li><a href="https://www.facebook.com/baantyy" target="_blank"><i className="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://api.whatsapp.com/send?phone=917978400978" target="_blank"><i className="fab fa-whatsapp"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/baantyy" target="_blank"><i className="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="https://www.instagram.com/baantyy" target="_blank"><i className="fab fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>

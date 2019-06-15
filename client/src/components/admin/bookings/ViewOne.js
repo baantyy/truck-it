@@ -16,10 +16,9 @@ class ViewOne extends React.Component {
     }
 
     componentDidMount(){
-        document.title = 'Booking Details'
         const { user, match } = this.props
         const id = match.params.id
-        axios.get(`/api/users/bookings/${id}`,{
+        axios.get(`/api/admin/bookings/${id}`,{
                 headers: { 'x-auth': user.token }
             })
             .then(res => {
@@ -27,11 +26,13 @@ class ViewOne extends React.Component {
                     booking: res.data,
                     isLoaded: true
                 }))
+                document.title = res.data.user.fullname
             })
     }
     
     render(){
         const { booking, isLoaded } = this.state
+        const id = this.props.match.params.id
         return (
             <React.Fragment>
                 <AuthHeader />
@@ -39,7 +40,8 @@ class ViewOne extends React.Component {
                     <div className="admin">
                         <div className="container">
                             <ul className="topLinks">
-                                <li><Link className="edit" to="/customer">Back</Link></li>
+                                <li><Link to={`/admin/bookings/edit/${id}`}>Edit</Link></li>
+                                <li><Link className="edit" to="/admin">Back</Link></li>
                             </ul>
                             { isLoaded &&
                             <div className="row">
@@ -70,6 +72,28 @@ class ViewOne extends React.Component {
                                         </ul>
                                     </div>
                                 </div>
+                                <div className="col-lg-6">
+                                    <h1>Customer Details</h1>
+                                    <div className="viewBox">
+                                        <ul>
+                                            <li><b>Name</b> : { booking.user.fullname }</li>
+                                            <li><b>Email</b> : { booking.user.email }</li>
+                                            <li><b>Mobile</b> : { booking.user.mobile }</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                { booking.vendor && 
+                                <div className="col-lg-6">
+                                    <h1>Vendor Details</h1>
+                                    <div className="viewBox">
+                                        <ul>
+                                            <li><b>Name</b> : { booking.vendor.fullname }</li>
+                                            <li><b>Email</b> : { booking.vendor.email }</li>
+                                            <li><b>Mobile</b> : { booking.vendor.mobile }</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                }
                             </div>
                             }
                         </div>

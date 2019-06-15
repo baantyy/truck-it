@@ -10,7 +10,7 @@ const bookingSchema = new Schema({
     },
     vendor: {
         type: Schema.Types.ObjectId,
-        ref: "Vendor"
+        ref: "User"
     },
     bookedAt: {
         type: Date,
@@ -45,7 +45,11 @@ const bookingSchema = new Schema({
         text: String,
         value: Number
     },
-    amount: Number
+    amount: Number,
+    status: {
+        type: Boolean,
+        default: true
+    }
 })
 
 bookingSchema.plugin(uniqueValidator, { message: '{PATH} already exists' })

@@ -16,10 +16,10 @@ class ViewOne extends React.Component {
     }
 
     componentDidMount(){
-        document.title = 'Booking Details'
+        document.title = "Booking Details"
         const { user, match } = this.props
         const id = match.params.id
-        axios.get(`/api/users/bookings/${id}`,{
+        axios.get(`/api/vendors/bookings/${id}`,{
                 headers: { 'x-auth': user.token }
             })
             .then(res => {
@@ -39,7 +39,7 @@ class ViewOne extends React.Component {
                     <div className="admin">
                         <div className="container">
                             <ul className="topLinks">
-                                <li><Link className="edit" to="/customer">Back</Link></li>
+                                <li><Link className="edit" to="/vendor">Back</Link></li>
                             </ul>
                             { isLoaded &&
                             <div className="row">
@@ -67,6 +67,16 @@ class ViewOne extends React.Component {
                                             <li><b>Dimension</b> : { booking.truck.dimension._length + 'ft. x' + booking.truck.dimension._breadth + 'ft. x' + booking.truck.dimension._height + 'ft.'  }</li>
                                             <li><b>Capacity</b> : { booking.truck.capacity + 'Kg' }</li>
                                             <li><img src={ booking.truck.image } alt="" style={{maxWidth: '100%', marginTop: '20px', height: '186px'}} /></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6">
+                                    <h1>Customer Details</h1>
+                                    <div className="viewBox">
+                                        <ul>
+                                            <li><b>Name</b> : { booking.user.fullname }</li>
+                                            <li><b>Email</b> : { booking.user.email }</li>
+                                            <li><b>Mobile</b> : { booking.user.mobile }</li>
                                         </ul>
                                     </div>
                                 </div>

@@ -826,6 +826,20 @@ p.success{
 .tableBox table th:last-child{
     width: 90px;
 }
+.tableBox a.box,
+.tableBox button.box{
+    text-decoration: none;
+    border: 1px solid;
+    padding: 5px 10px;
+    font-size: 13px;
+    display: inline-block;
+    margin: 0 1px;
+    border-radius: 3px;
+}
+.table-bordered th.box{
+    min-width: 145px !important;
+    text-align: center;
+}
 .cap{
     text-transform: capitalize;
 }
@@ -849,6 +863,9 @@ p.success{
     font-size: 14px;
     padding: 10px 20px;
     margin-bottom: 10px;
+}
+.form .field[disabled]{
+    cursor: not-allowed;
 }
 .form .button{
     background: #3d38a0;
